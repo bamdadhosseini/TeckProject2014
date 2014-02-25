@@ -1,0 +1,115 @@
+%% getDescentDir
+%
+% compute the descent direction for optimization algorithm
+
+function [direction, s, y] = getDescentDir( grad, method, R, iter,...
+                s, y, gradold, solold, sol, m, aa )
+            
+    global verbosity;
+
+    if strcmpi(method,'STEEPESTDESCENT')
+        direction = -grad;
+        normfactor = 1./sqrt(sum(direction.^2, 2));
+        %size(normfactor)
+        direction = direction.*repmat(normfactor,1, size(grad,2));
+        %pause;
+        
+    elseif strcmpi(method, 'REGULARIZATION')
+        direction = -((R)\(grad'))';
+        normfactor = 1./sqrt(sum(direction.^2, 2));
+        direction = direction.*repmat(normfactor,1, size(grad,2));
+        %direction = min(normfactor).*direction;
+        
+    elseif strcmpi(method, 'LBFGS') % see page 177-179 of Nocedal
+       
+        if (iter <= 3) % we are initializing so use the Hessian of the
+                      % regularization for the first guess
+            if verbosity ==1
+                disp(' ');
+                disp(['>>>>initializing LBFGS : ', num2str(iter)]);
+            end
+            direction = -((R)\(grad'))';
+            normfactor = 1./sqrt(sum(direction.^2, 2));
+            direction = direction.*repmat(normfactor,1, size(grad,2));
+            
+            if (iter > 2)
+                s(:, iter-2) = sol(:) - solold(:);
+                y(:, iter-2) = grad(:) - gradold(:);
+            end
+            size(s)
+            size(y)
+             disp(norm(s,1))
+             disp(norm(y,1))
+             pause;
+        else       
+            mm = min(iter-3, m);
+            %norm(s)
+            %norm(y)
+            % use LBFGS
+            q = grad(:);
+            
+            % first loop of LBFGS
+            for ii = mm:-1:1 
+                ii
+                y(:,ii)'*s(:,ii)
+                pause
+                rho(ii) = 1/(y(:,ii)'*s(:,ii));
+                alpha(ii) = rho(ii)*(s(:,ii)'*q);
+                q = q - alpha(ii)*y(:,ii);
+            end
+            
+            % approximate hessian
+            gammak = (s(:,end)'*y(:,end))/(y(:,end)'*y(:,end));
+            %r = gammak*q;
+            %disp(aa);
+            r = ((R)\(grad'))';
+            normfactor = 1./sqrt(sum(r.^2, 2));
+            r = r.*repmat(normfactor,1, size(grad,2));
+            %figure(3)
+            %size(r)
+            %plot(r')
+            r = r(:);
+
+            %r = (aa*(R'*R)\(grad'))';
+            %r = r(:);
+            %norm(r)
+            %pause
+            
+            
+            % second loop of LBFGS
+            for jj = 1:mm
+               beta = rho(jj)*(y(:,jj)'*r);
+               r = r + s(:,jj)*(alpha(jj)-beta);
+               %figure(3)
+               %plot( -reshape(r, size(sol,1), size(sol, 2))' );
+               %pause
+            end
+            % set direction
+            direction = -reshape(r, size(sol,1), size(sol, 2));
+            normfactor = 1./sqrt(sum(direction.^2, 2));
+            direction = direction.*repmat(normfactor,1, size(grad,2));
+            %direction = min(normfactor).*direction;
+            % update memory
+            if (iter-3 > m)
+                s(:,1:end) = [s(:,2:end), sol(:) - solold(:)]
+                y(:,1:end) = [y(:,2:end), grad(:) - gradold(:)];
+            else
+                s(:,iter-3) = sol(:) - solold(:);
+                y(:,iter-3) = grad(:) - gradold(:);
+            end
+            norm(s)
+            norm(y)
+            size(s)
+            size(y)
+            % alpha
+            % rho
+            % beta
+%             
+             pause
+        end
+            
+    else
+        disp('Optimization method not available!');
+        pause;
+    end
+end

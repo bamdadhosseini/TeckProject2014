@@ -1,0 +1,18 @@
+% single iteration of Jacobi Multi grid
+
+function [sol] = weightedJacobiMgIteration( MG, uh, fh, nu1, nu2, w, level)
+
+sol = jacobiRelax(MG, sol, RHS);
+
+    if level == length(MG)
+
+        sol = jacobiRelax(MG, uh, fh);
+
+    else
+
+        f2h = MG(level).If2c*( fh - MG(level).mat*uh);
+        v2h = zeros(length(MG(level-1).mat,1);
+        [v2h] = weightedJacobiMgIteration(MG, v2h, f2h, nu1, nu2, w, level+1);
+    end
+    
+end

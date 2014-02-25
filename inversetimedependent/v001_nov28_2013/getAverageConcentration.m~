@@ -1,0 +1,37 @@
+%% getAverageConcentration( sensor, M, dt )
+
+
+function aveConc = getAverageConcentration( C, sensor, M, dt )
+
+% loop over sensors 
+
+for iSens = 1:length(sensor)
+
+    thissens  = sensor(iSens); % helps with a cleaner code, not a big price to pay
+    thisconc = C(iSens, :);   % again just to make things more clear
+    
+    % partition the concentration (mol/m^s) into a matrix where each column
+    % is the concentration during measurement period 
+    
+    for iMeas = 1:length(thissens.start_indx)
+       
+        data(:,iMeas) = thisconc(thissens.start_indx(iMeas):thissens.end_indx(iMeas));
+       
+    end
+    
+    % now compute the averages
+    
+    % number of averaging steps between each start and end time
+    numberofaverages = thissens.end_indx(1)- thissens.start_indx(1)/thissens.ave_period;
+    
+    
+    
+    for iAve = 1:numberofaverages
+        
+        aveConc(iAve,:) = (1/thissens.ave_period)*...
+                        sum(data(1+(iAve-1)*thissens.ave_period:iAve*thissens.ave_period,:), 1);
+    
+    end
+end
+
+end

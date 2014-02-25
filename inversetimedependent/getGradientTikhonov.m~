@@ -1,0 +1,14 @@
+%% getGradientTikhonov
+%
+% compute the gradient of the Tikhonov functional
+
+function gradJ = getGradientTikhonov( adjsol, source, R, alpha)
+
+    global verbosity
+    gradR = source.Q*(R'*R); % gradient of regularization term
+    
+    gradJ = adjsol + alpha*gradR;
+    
+     
+    
+end

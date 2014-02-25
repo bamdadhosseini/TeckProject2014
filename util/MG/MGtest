@@ -1,0 +1,33 @@
+% Multi-Grid test script
+
+N = 769;
+dd = 10; % discretization size
+R = defineRegularization(N, dd);
+
+RR = R'*R; % this is the matrix we want to invert
+
+% construct random solution
+
+x = rand(N,1);
+
+% get RHS 
+RHS = RR*x;
+
+%% now use MG to solve the system and retrieve x again
+
+nMGlevels = 4; % number of MG levels 
+nu1 = 6; % number of relaxation steps going up
+nu2 = 6; %number of relaxations steps on residual coming up
+
+% get MG matrices (precompute for performance)
+for i = 1:nMGlevels
+    
+    mat = defineRegularization(floor((N-2)/i+1, i*dd); 
+    MG(i).mat = mat'*mat
+    
+end
+
+xx = MGsolve( 
+
+
+

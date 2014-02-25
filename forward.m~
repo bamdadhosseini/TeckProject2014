@@ -1,0 +1,179 @@
+% FORWARD: Solve the forward atmospheric dispersion problem.  That
+%    is, given the source emission rates (in mol/s), calculate the
+%    amount of Zn deposited in each receptor (in kg).
+
+tic
+clear all
+isanim = 0;         % animate the plumes
+isplot = 1;         % plot deposition (takes a LONG time if tskip=1!)
+tskip =  20;        % skip time steps in deposition calculation
+IsAvgWind = 0;      % average the wind data if tskip > 1?
+IsBWplots = 1;      % write black/white plot versions?
+mycolormap = summer;% suggestions: summer, jet, hot, gray, ...
+mybwcolmap = gray;   
+umin = 0.5          % wind cut-off = 0.5 according to Hanna et al. (1982)
+nrec = 26;           % 9 or 11
+stabclass = 'a'; 
+
+setparams;
+
+% Add noise to the data (if necessary).
+%dnoise = 0.0;
+%source.Q = source.Q .* (1 + dnoise*(1-2*rand([1,4])));  % add noise
+
+% Set up other solver parameters. 
+nx = 50;
+ny = nx;
+nz = 10;
+xlim = [-1500,4500];
+ylim = [-1500,4500];
+zlim = [0,100];
+dx = (xlim(2)-xlim(1)) / nx;
+dy = (ylim(2)-ylim(1)) / ny;
+dz = (zlim(2)-zlim(1)) / nz;
+x0 = [xlim(1):dx:xlim(2)]; % distance along the wind direction (m)
+y0 = [ylim(1):dy:ylim(2)]; % cross-wind distance (m)
+z0 = [zlim(1):dz:zlim(2)]; % vertical distance (m)
+[xmesh,ymesh] = meshgrid(x0,y0);
+zmesh = 0;                 % plot only at ground level!
+smallfont = [14];
+ncontour = 10;
+
+% The original Excel file can't be read into Matlab.  It had to be
+% resaved using Excel on my Mac (in "Excel 4.0 Worksheet" format).
+wind = readwind( 'WindDataJun3toJul2_2002B.xls', 600, 0, umin );
+%wind = readwind( 'WindDataPartIIc.xls', 600, 0, umin );
+
+pskip = 100;  % skip time steps for animations only
+
+if isanim, figure(2), clf, end
+fprintf( 1, 'Accumulating deposition data (tskip=%d) ...\n', tskip );
+dt  = (wind.time(2) - wind.time(1)) * tskip;
+dep = 0;
+dep2= 0;
+nwind = length(wind.dir);
+
+for k = [1 : tskip : nwind],
+
+  k2 = min( k+tskip-1, nwind );
+  if IsAvgWind,
+    thetaavg = mean( wind.dir(k:k2) );
+    Vwavg    = mean( wind.vel(k:k2) );
+  else
+    thetaavg = wind.dir(k);
+    Vwavg    = wind.vel(k);
+  end
+
+  if isanim && (mod(k-1+pskip,pskip) == 0 || k == nwind), 
+    theta = +(pi/2 - thetaavg);
+    Vw    = Vwavg;
+
+    warning( 'OFF', 'MATLAB:divideByZero' );
+    C = 0;
+    for i = 1 : source.n,
+      xxx = (xmesh - source.x(i))*cos(theta) + (ymesh - source.y(i))*sin(theta);
+      yyy =-(xmesh - source.x(i))*sin(theta) + (ymesh - source.y(i))*cos(theta);
+      zzz = zmesh;
+      C = C + ermak( xxx, yyy, zzz, source.z(i), source.Q(i), ...
+                     Vw, Vspbo, Vdzns, stabclass );   % in mol/m^3
+    end
+
+    warning( 'ON', 'MATLAB:divideByZero' );
+    
+    if max(C(:)) > 0,
+      contour( xmesh, ymesh, C, ncontour );
+      %contour3( xmesh, ymesh, C, 20 );
+      set(gca,'xlim',[min(xmesh(:)),max(xmesh(:))]);
+      set(gca,'ylim',[min(ymesh(:)),max(ymesh(:))]);
+      xlabel('x (m)'), ylabel( 'y (m)' )
+      colorbar
+      title( sprintf( 'Concentration, mol/m^3 (t=%6.2f h)', wind.time(k)/3600 ) )
+      grid on  shg
+      pause(0.01)   % force each frame to appear.
+    end
+  end
+
+  if floor((k-tskip)/500) ~= floor(k/500), fprintf( 1, ' %5d ..', k ), end
+  theta = +(pi/2 - thetaavg);    % ** CHECK THIS! **
+  Vw    = Vwavg;
+  warning( 'OFF', 'MATLAB:divideByZero' );
+  %% if isplot, fprintf(1,'%d..',k), end
+
+  for i = 1 : source.n,
+    %% First, accumulate depositions at the receptor sites.
+    xxx = (recept.x - source.x(i))*cos(theta) + (recept.y - source.y(i))*sin(theta);
+    yyy =-(recept.x - source.x(i))*sin(theta) + (recept.y - source.y(i))*cos(theta);
+    C = ermak( xxx, yyy, recept.z, source.z(i), source.Q(i), ...
+               Vw, Vszns, Vdzns, stabclass );
+    % C is a concentration in mol/m^3, convert to deposition in kg ...
+    dep = dep + (A * dt * Mzn * Vdzns) * C; 
+    
+    if isplot,
+      %% Next, accumulate depositions in all cells on the mesh.
+      xxx = (xmesh - source.x(i))*cos(theta) + (ymesh - source.y(i))*sin(theta);
+      yyy =-(xmesh - source.x(i))*sin(theta) + (ymesh - source.y(i))*cos(theta);
+      zzz = zmesh;
+      C2 = ermak( xxx, yyy, zzz, source.z(i), source.Q(i), ...
+                   Vw, Vszns, Vdzns, stabclass );
+      % C2 is a concentration in mol/m^3, convert to deposition in kg ...
+      dep2 = dep2 + ((dx*dy) * dt * Mzn * Vdzns) * C2; 
+    end
+  end
+  warning( 'ON', 'MATLAB:divideByZero' );
+  
+end
+
+fprintf( 1, '\nDeposition in each receptor (mg):\n' );
+disp(dep(1:nrec)*1e6)
+fprintf( 1, 'Total deposited in all receptors (mg):\n' );
+disp(sum(dep(1:nrec))*1e6)
+
+figure(1)
+bar(dep(1:nrec)*1e6)
+set(gca,'XTick',[1:nrec]);
+set(gca, 'XTickLabel', recept.label(1:nrec))
+xlabel('Receptor'), ylabel('Amount deposited (mg)')
+grid on
+set(gca,'XGrid', 'off')
+shg
+
+print -depsc 'depbar.eps'
+
+%fprintf( 1, 'L1-error: %e,  L2-error: %e\n', norm(dep-depsave,1), norm(dep-depsave,2) );
+%fprintf( 1, 'Relative errors: \n' );
+%disp(abs(dep-depsave)./depsave )
+
+if isplot,
+  figure(3), clf
+  clist = [ 0.001, 0.005, 0.01, 0.015, 0.02, 0.025, 0.03]; 
+   [cdep2, hdep2] = contourf( xmesh, ymesh, dep2/(dx*dy)*1e3, clist );
+   max(max(max(dep2/(dx*dy)*1e3)))
+%  [cdep2, hdep2] = contourf( xmesh, ymesh, dep2/(dx*dy)*1e3, 10);
+%   clabel(cdep2, hdep2, 'FontSize', smallfont-2 )
+  %colormap jet;   % colormap(0.8*(1-jet))
+  colormap(1-winter);  % for filled contours
+  colorbar
+  hold on
+  plot( source.x, source.y, 'ro', 'MarkerEdgeColor', 'k', ...
+        'MarkerFaceColor', 'r' )
+  text( source.x, source.y, source.label, 'FontSize', smallfont, 'FontWeight','bold' );
+  axis equal
+  set(gca, 'XLim', xlim ), set(gca, 'YLim', ylim )
+  xlabel('x (m)'), ylabel('y (m)')
+  title('Contours of Zn concentration (g/m^2)')
+  greencolor = [0,0.816,0];  % matches triangles in trailsite3.eps
+  plot( recept.x(1:nrec), recept.y(1:nrec), 'g^', 'MarkerEdgeColor', 'k', ...
+        'MarkerFaceColor', greencolor )
+  text( recept.x(1:nrec), recept.y(1:nrec), recept.label(1:nrec), ...
+        'FontSize', smallfont, 'FontWeight', 'bold' )
+  hold off
+  if IsBWplots,
+    colormap(gray)
+    print -depsc 'dep1bw.eps'
+  end
+  colormap(1-winter);  % for filled contours
+  print -depsc 'dep1.eps'
+end
+
+save 'forsave.mat' 
+toc

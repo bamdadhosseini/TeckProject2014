@@ -1,0 +1,491 @@
+@article{stockie2011siam,
+  title={The mathematics of atmospheric dispersion modeling},
+  author={Stockie, John. M.},
+  journal={SIAM Review},
+  volume={53},
+  number={2},
+  pages={349--372},
+  year={2011},
+  publisher={SIAM}
+}
+
+@book{arya1999air,
+  title={Air pollution meteorology and dispersion},
+  author={Arya, S. Pal},
+  year={1999},
+  publisher={Oxford University Press, New York}
+}
+
+@book{seinfeld1997atmos,
+  title={Atmospheric Chemistry and Physics: from Air Pollution to Climate Change},
+  author={Seinfeld, John H. and Pandis, Spyros N.},
+  year={1997},
+  publisher={John Wiley \& Sons Inc.}
+}
+
+@book{hundsdorfer2007numerical,
+  title={Numerical Solution of Time Dependent 
+Advection-Diffusion-Reaction Equations},
+  author={Hundsdorfer, Willem and Verwer, Jan G.},
+  year={2007},
+  publisher={Springer}
+}
+
+@book{leveque2002finite,
+  title={Finite Volume Methods for Hyperbolic Problems},
+  author={LeVeque, Randall J.},
+  year={2002},
+  publisher={Cambridge University Press}
+}
+
+@article{roberts-1924,
+  author ={O. F. T. Roberts},
+  title = {The theoretical scattering of smoke in a turbulent atmosphere},
+  journal ={Philtransa},
+  year = {1924},
+  volume = {104},
+  number = {728},
+  pages = {640-654},
+}
+
+@article{monin1954basic,
+  title={Basic laws of turbulent mixing in the surface layer of the atmosphere},
+  author={Monin, A.S. and Obukhov, A.M.},
+  journal={Contributions of the Geophysical Institute of Slovakian Academy 
+of Sciences, USSR},
+  volume={151},
+  pages={163--187},
+  year={1954}
+}
+
+@article{perez2005lowatmos,
+  title={Analysis and parameterisation of wind profiles in the low atmosphere},
+  author={Perez, I.A. and Garcia, M.A. and Sanchez, M.L. and De Torre, B.},
+  journal={Solar Energy},
+  volume={78},
+  number={6},
+  pages={809--821},
+  year={2005},
+  publisher={Elsevier}
+}
+
+@article{golder1972relations,
+  title={Relations among stability parameters in the surface layer},
+  author={Golder, Donald},
+  journal={Boundary-Layer Meteorology},
+  volume={3},
+  number={1},
+  pages={47--58},
+  year={1972},
+  publisher={Springer}
+}
+
+@article{mcrae1982numerical,
+  title={Numerical solution of the atmospheric diffusion equation for 
+chemically reacting flows},
+  author={McRae, Gregory J. and Goodin, William R. and Seinfeld, John H.},
+  journal={Journal of Computational Physics},
+  volume={45},
+  number={1},
+  pages={1--42},
+  year={1982},
+  publisher={Elsevier}
+}
+
+@book{zlatevcomputer,
+  title={Computer Treatment of Large Air Pollution Models.},
+  author={Zlatev, Z.},
+  year={1995},
+  publisher={Kluwer}
+}
+
+@article{dimov2004computational,
+  title={Computational challenges in the numerical treatment of large air pollution models},
+  author={Dimov, I. and Georgiev, K. and Ostromsky, Tz. and Zlatev, Z.},
+  journal={Ecological Modelling},
+  volume={179},
+  number={2},
+  pages={187--203},
+  year={2004},
+  publisher={Elsevier}
+}
+@book{rudin1991functional,
+  title={Functional Analysis. International series in pure and applied mathematics},
+  author={Rudin, Walter},
+  year={1991},
+  publisher={McGraw-Hill, New York}
+}
+@article{pashardes1995statistical,
+  title={Statistical analysis of wind speed and direction in {Cyprus}},
+  author={Pashardes, Stelios and Christofides, Constantinos},
+  journal={Solar Energy},
+  volume={55},
+  number={5},
+  pages={405--414},
+  year={1995},
+  publisher={Elsevier}
+}
+
+@article{leveque1998balancing,
+  title={Balancing source terms and flux gradients in high-resolution {Godunov}
+ methods: the quasi-steady wave-propagation algorithm},
+  author={LeVeque, Randall J.},
+  journal={Journal of Computational Physics},
+  volume={146},
+  number={1},
+  pages={346--365},
+  year={1998},
+  publisher={Elsevier}
+}
+
+@book{hirsch2007numerical,
+  title={Numerical Computation of Internal and External Flows: 
+  The Fundamentals of Computational Fluid Dynamics},
+  author={Hirsch, Charles},
+  volume={1},
+  year={2007},
+  publisher={Butterworth-Heinemann}
+}
+
+@book{chung2010computational,
+  title={Computational {Fluid} {Dynamics}},
+  author={Chung, T.J.},
+  year={2010},
+  publisher={Cambridge University Press}
+}
+
+@book{evans1998partial,
+  title={Partial {Differential Equations}},
+  author={Evans, Lawrence C.},
+  year={1998},
+  publisher={American Mathematical Society, Providence}
+}
+
+@article{nagendra2002line,
+  title={Line source emission modelling},
+  author={Nagendra, S.M.S. and Khare, Mukesh},
+  journal={Atmospheric Environment},
+  volume={36},
+  number={13},
+  pages={2083--2098},
+  year={2002},
+  publisher={Elsevier}
+}
+
+@article{mcrae1982development,
+  title={Development of a second-generation mathematical model for urban air 
+{pollution-I}. {Model} formulation},
+  author={McRae, Gregory J. and Goodin, William R. and Seinfeld, John H.},
+  journal={Atmospheric Environment},
+  volume={16},
+  number={4},
+  pages={679--696},
+  year={1982},
+  publisher={Elsevier}
+}
+
+@book{kabanikhin2009inverse,
+  title={Inverse and Ill-posed Problems},
+  author={Kabanikhin, Sergey I.},
+  publisher={Siberian Scientific Publishers, Novosibirsk},
+  year={2009}
+}
+
+@article{baroutian2006measuring,
+  title={Measuring and modeling particulate dispersion:
+ A case study of {Kerman} Cement Plant},
+  author={Baroutian, S. and Mohebbi, A. and Goharrizi, A. Soltani},
+  journal={Journal of Hazardous Materials},
+  volume={136},
+  number={3},
+  pages={468--474},
+  year={2006},
+  publisher={Elsevier}
+}
+
+@article{geels2004wind,
+  title={Wind dispersal of genetically modified pollen from oilseed rape and rye fields},
+  author={Geels, C. and L{\o}fstr{\o}m, P. and Frohn, L.M. and Brandt, J. and Kjellsson, G.},
+  journal={DARCOFenews},
+  number={2},
+  year={2004}
+}
+
+@article{bowen1994long,
+  title={Long-term tracer study at {Los Alamos}, {New Mexico}. {Part II}: Evaluation and comparison of several methods to determine dispersion coefficients},
+  author={Bowen, Brent M.},
+  journal={Journal of Applied Meteorology},
+  volume={33},
+  number={11},
+  pages={1236--1254},
+  year={1994}
+}
+
+@article{lee1997computational,
+  title={Computational {Fluid} {Dynamics} modeling for
+ emergency preparedness and response},
+  author={Lee, R.L. and Albritton, J.R. and Ermak, D.L. and Kim, J.},
+  journal={Environmental Modelling \& Software},
+  volume={12},
+  number={1},
+  pages={43--50},
+  year={1997},
+  publisher={Elsevier}
+}
+
+@Manual{epa-2010,
+  organization = {U.S. Environmental Protection Agency}, 
+  title = 	 {Guideline on Air Quality Models, {Appendix W} to {P}art
+                  51, {T}itle 40: {P}rotection of the Environment, {C}ode of
+                  {F}ederal {R}egulations}, 
+  year = 	 2010,
+}
+
+@article{marchuk1990splitting,
+  title={Splitting and alternating direction methods},
+  author={Marchuk, Guri I.},
+  journal={Handbook of Numerical Analysis},
+  volume={1},
+  pages={197--462},
+  year={1990},
+  publisher={Elsevier}
+}
+
+@article{ascher1997implicit,
+  title={Implicit-explicit {Runge}-{Kutta} methods for time-dependent
+ partial differential equations},
+  author={Ascher, Uri M. and Ruuth, Steven J. and Spiteri, Raymond J.},
+  journal={Applied Numerical Mathematics},
+  volume={25},
+  number={2},
+  pages={151--167},
+  year={1997},
+  publisher={Elsevier}
+}
+
+@manual{clawpack43man,
+   title={CLAWPACK Version 4.3 User's Guide},
+   author={Randall J. LeVeque},
+   organization={University of Washington},
+   year={2006}
+}
+
+@book{zlatev2006computational,
+  title={Computational and Numerical Challenges in Environmental Modelling},
+  author={Zlatev, Z. and Dimov, I.},
+  year={2006},
+  publisher={Elsevier}
+}
+
+@article{roberts1923theoretical,
+  title={The theoretical scattering of smoke in a turbulent atmosphere},
+  author={Roberts, O.F.T.},
+  journal={Proceedings of the Royal Society of London. Series A},
+  volume={104},
+  number={728},
+  pages={640--654},
+  year={1923},
+  publisher={The Royal Society}
+}
+
+@article{sutton1932theory,
+  title={A theory of eddy diffusion in the atmosphere},
+  author={Sutton, O.G.},
+  journal={Proceedings of the Royal Society of London. Series A},
+  volume={135},
+  number={826},
+  pages={143--165},
+  year={1932},
+  publisher={JSTOR}
+}
+
+@article{taylor1915eddy,
+  title={Eddy motion in the atmosphere},
+  author={Taylor, Geoffrey I.},
+  journal={Philosophical Transactions of the Royal Society of London. Series A},
+  volume={215},
+  pages={1--26},
+  year={1915},
+  publisher={JSTOR}
+}
+
+@article{ermak1977analytical,
+  title={An analytical model for air pollutant transport and deposition from a point source},
+  author={Ermak, Donald L.},
+  journal={Atmospheric Environment},
+  volume={11},
+  number={3},
+  pages={231--237},
+  year={1977},
+  publisher={Elsevier}
+}
+
+@article{fisher1981theoretical,
+  title={A theoretical model for particulate transport from an elevated source in the atmosphere},
+  author={Fisher, B.E.A. and Macqueen, J.F.},
+  journal={IMA Journal of Applied Mathematics},
+  volume={27},
+  number={3},
+  pages={359--371},
+  year={1981},
+  publisher={IMA}
+}
+
+@article{turner2001factors,
+  title={Factors influencing volcanic ash dispersal from the 1995 and 1996 eruptions of {Mount Ruapehu, New Zealand}},
+  author={Turner, Richard and Hurst, Tony},
+  journal={Journal of Applied Meteorology},
+  volume={40},
+  number={1},
+  pages={56--69},
+  year={2001}
+}
+
+@article{emeis2011measurement,
+  title={Measurement and simulation of the 16/17 {April} 2010 {E}yjafjallaj{\"o}kull volcanic ash layer dispersion in the northern Alpine region},
+  author={Emeis, S. and Forkel, R. and Junkermann, W. and Sch{\"a}fer, K. and Flentje,
+ H. and Gilge, S. and Fricke, W. and Wiegner, M. and Freudenthaler, V. and Gro{\ss}, S.
+ and others},
+  journal={Atmospheric Chemistry and Physics},
+  volume={11},
+  number={6},
+  pages={2689--2701},
+  year={2011}
+}
+
+@article{yang1998accuracy,
+  title={Accuracy of numerical methods for solving the advection--diffusion equation as applied to spore and insect dispersal},
+  author={Yang, Y. and Wilson, L.T. and Makela, M.E. and Marchetti, M.A.},
+  journal={Ecological Modelling},
+  volume={109},
+  number={1},
+  pages={1--24},
+  year={1998},
+  publisher={Elsevier}
+}
+
+@article{jeong2005determination,
+  title={Determination of the source rate released into the environment from a nuclear power plant},
+  author={Jeong, Hyo-Joon and Kim, Eun-Han and Suh, Kyung-Suk and Hwang, Won-Tae and Han, Moon-Hee and Lee, Hong-Keun},
+  journal={Radiation Protection Dosimetry},
+  volume={113},
+  number={3},
+  pages={308--313},
+  year={2005},
+  publisher={NTP}
+}
+
+@article{chastain2000application,
+  title={Application of a {Gaussian} Plume Model of Odor Dispersion to Select a Site for Livestock Facilities},
+  author={Chastain, John P. and Wolak, Francis J.},
+  journal={Proceedings of the Water Environment Federation},
+  volume={2000},
+  number={3},
+  pages={745--758},
+  year={2000},
+  publisher={Water Environment Federation}
+}
+
+@article{carrascal1993sensitivity,
+  title={Sensitivity of {Gaussian} plume model to dispersion specifications},
+  author={Carrascal, M.D. and Puigcerver, M. and Puig, P.},
+  journal={Theoretical and Applied Climatology},
+  volume={48},
+  number={2-3},
+  pages={147--157},
+  year={1993},
+  publisher={Springer}
+}
+
+@article{hamby2002gaussian,
+  title={The {Gaussian} atmospheric transport model and its sensitivity to the joint frequency distribution and parametric variability},
+  author={Hamby, D.M.},
+  journal={Health Physics},
+  volume={82},
+  number={1},
+  pages={64--73},
+  year={2002},
+  publisher={LWW}
+}
+
+@article{stockie2010inverse,
+   author = {{Lushi}, E. and {Stockie}, J.~M.},
+    title = "{An inverse Gaussian plume approach for estimating atmospheric pollutant emissions from multiple point sources}",
+  journal = {Atmospheric Environment},
+archivePrefix = "arXiv",
+   eprint = {0908.1589},
+ primaryClass = "physics.ao-ph",
+     year = 2010,
+    month = mar,
+   volume = 44,
+    pages = {1097-1107},
+   adsurl = {http://adsabs.harvard.edu/abs/2010AtmEn..44.1097L},
+  adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@article{cao2003adjoint,
+  title={Adjoint sensitivity analysis for differential-algebraic equations: The adjoint {DAE} system and its numerical solution},
+  author={Cao, Yang and Li, Shengtai and Petzold, Linda and Serban, Radu},
+  journal={SIAM Journal on Scientific Computing},
+  volume={24},
+  number={3},
+  pages={1076--1089},
+  year={2003},
+  publisher={SIAM}
+}
+
+@book{isakov1990inverse,
+  title={Inverse Source Problems},
+  author={Isakov, Victor},
+  year={1990},
+  publisher={American Mathematical Society, Providence}
+}
+
+@book{kreyszig1989introductory,
+  title={Introductory Functional Analysis with Applications},
+  author={Kreyszig, Erwin},
+  volume={1},
+  year={1989},
+  publisher={Wiley, New York}
+}
+
+@article{reuther1996aerodynamic,
+title = "Aerodynamic shape optimization of supersonic aircraft configurations via an adjoint formulation on distributed memory parallel computers ",
+journal = "Computers and Fluids ",
+volume = "28",
+number = "4–5",
+pages = "675 - 700",
+year = "1999",
+issn = "0045-7930",
+author = "J. Reuther and J.J. Alonso and M.J. Rimlinger and A. Jameson"
+}
+
+
+@book{marchuk1995adjoint,
+  title={Adjoint Equations and Analysis of Complex Systems},
+  author={Marchuk, Guri I.},
+  year={1995},
+  publisher={Kluwer}
+}
+
+@book{marchuk1996adjoint,
+  title={Adjoint Equations and Perturbation Algorithms in Nonlinear Problems},
+  author={Marchuk, Guri I. and Agoshkov, Valeri I. and Shuti︠a︡ev, V.P.},
+  year={1996},
+  publisher={CRC Press}
+}
+
+@book{kaipio2005statistical,
+  title={Statistical and computational inverse problems},
+  author={Kaipio, Jari P. and Somersalo, Erkki},
+  year={2005},
+  publisher={Springer}
+}
+
+
+
+
+
+
+
+
